@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
-import { stickerObject } from '../../app/types';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../../app/store";
+import { stickerObject } from "../../app/types";
 
 export interface CounterState {
   value: stickerObject[];
-  status: 'idle' | 'loading' | 'failed';
+  status: "idle" | "loading" | "failed";
 }
 //Itinital state from local storage
 const initialState: CounterState = {
@@ -15,11 +15,11 @@ const initialState: CounterState = {
     { stickerID: 1, stickerTaskState: '123', data: { header: '123', content: '123' } }, 
     */
   ],
-  status: 'idle',
+  status: "idle",
 };
 
 export const stickerSlice = createSlice({
-  name: 'stickers',
+  name: "stickers",
   initialState,
   reducers: {
     setStickerHeader: (state, action: PayloadAction<stickerObject>) => {

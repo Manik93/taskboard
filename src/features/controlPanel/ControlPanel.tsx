@@ -1,12 +1,12 @@
-import React from 'react';
-import DropdownComponent from '../dropdownComponent/DropdownComponent';
-import './controlPanelStyle.css';
+import React from "react";
+import DropdownComponent from "../dropdownComponent/DropdownComponent";
+import "./controlPanelStyle.css";
 
 const ControlPanel = () => {
-  console.log('ControlPanelComponent:Rendered');
+  console.log("ControlPanelComponent:Rendered");
 
   const onClickPlaceholder = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log('Export');
+    console.log("Export");
   };
 
   return (
@@ -15,7 +15,7 @@ const ControlPanel = () => {
         <div className="panelElements">
           <DropdownComponent />
           <button className="newCategory" onClick={onClickPlaceholder}>
-            {'=> Export'}
+            {"=> Export"}
           </button>
         </div>
       </div>

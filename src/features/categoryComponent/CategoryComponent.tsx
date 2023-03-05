@@ -1,11 +1,11 @@
-import React from 'react';
-import { useAppDispatch } from '../../app/hooks';
-import { categoryObject, stickerObject } from '../../app/types';
-import { filterTasks } from '../../app/helpers';
-import { addStickerToCategory, deleteCategory } from '../categoryComponent/categorySlice';
-import StickerComponent from '../stickerComponent/StickerComponent';
-import './categoryStyle.css';
-import { addSticker } from '../stickerComponent/stickerSlice';
+import React from "react";
+import { useAppDispatch } from "../../app/hooks";
+import { categoryObject, stickerObject } from "../../app/types";
+import { filterTasks } from "../../app/helpers";
+import { addStickerToCategory, deleteCategory } from "../categoryComponent/categorySlice";
+import StickerComponent from "../stickerComponent/StickerComponent";
+import "./categoryStyle.css";
+import { addSticker } from "../stickerComponent/stickerSlice";
 
 type categoryProps = {
   tasksList: stickerObject[];
@@ -21,18 +21,18 @@ const newSticker = (category: string) => {
   const sticker: stickerObject = {
     stickerID: stickerID,
     stickerTaskState: category,
-    data: { header: '', content: '' },
+    data: { header: "", content: "" },
   };
   return sticker;
 };
 
-const CategoryComponent = ({ tasksList, categoryObject }: categoryProps) => {
-  console.log('CategoryComponent ' + categoryObject.categoryTaskState + ':Rendered', tasksList);
+function CategoryComponent({ tasksList, categoryObject }: categoryProps) {
+  console.log("CategoryComponent " + categoryObject.categoryTaskState + ":Rendered", tasksList);
   const dispatch = useAppDispatch();
   const header: string = categoryObject.categoryTaskState;
 
   const filteredTasks = filterTasks(tasksList, categoryObject.categoryTaskState);
-  console.log('CATEGORY_COMPONENT:', filteredTasks, header);
+  console.log("CATEGORY_COMPONENT:", filteredTasks, header);
   //add sticker button handler
   const OnClickAddStickerHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
     dispatch(addStickerToCategory(newSticker(header)));
@@ -47,11 +47,11 @@ const CategoryComponent = ({ tasksList, categoryObject }: categoryProps) => {
     <div className="boardComponent">
       <div className="categoryTitle">
         <h1>{header}</h1>
-        <button onClick={handleOnClickDelete}>{'x'}</button>
+        <button onClick={handleOnClickDelete}>{"x"}</button>
       </div>
 
       <button className="addSticker" onClick={OnClickAddStickerHandler}>
-        {'+'}
+        {"+"}
       </button>
       {/* //replace to categoryObject */}
       {/* {filteredTasks.map((item, key) => {
@@ -74,6 +74,6 @@ const CategoryComponent = ({ tasksList, categoryObject }: categoryProps) => {
       })}
     </div>
   );
-};
+}
 
 export default CategoryComponent;

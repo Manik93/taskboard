@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useAppDispatch } from '../../app/hooks';
-import { stickerObject } from '../../app/types';
-import { deleteStickerFromCategory } from '../categoryComponent/categorySlice';
-import { deleteSticker, setStickerContent, setStickerHeader } from './stickerSlice';
-import './stickerStyle.css';
+import React, { useEffect, useState } from "react";
+import { useAppDispatch } from "../../app/hooks";
+import { stickerObject } from "../../app/types";
+import { deleteStickerFromCategory } from "../categoryComponent/categorySlice";
+import { deleteSticker, setStickerContent, setStickerHeader } from "./stickerSlice";
+import "./stickerStyle.css";
 
 //StickerComponent props type
 type stickerProps = {
@@ -12,7 +12,7 @@ type stickerProps = {
 
 const StickerComponent = (props: stickerProps) => {
   console.log(
-    ' -StickerComponent ' + props.stickerObj.stickerID + ' ' + props.stickerObj.stickerTaskState + ':Rendered'
+    " -StickerComponent " + props.stickerObj.stickerID + " " + props.stickerObj.stickerTaskState + ":Rendered"
   );
   //dispatch for redux actions
   const dispatch = useAppDispatch();
@@ -37,10 +37,10 @@ const StickerComponent = (props: stickerProps) => {
   //hadling changes in input elements
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     switch (event.target.id) {
-      case 'header':
+      case "header":
         setHeader(event.target.value);
         break;
-      case 'content':
+      case "content":
         setContent(event.target.value);
         break;
       default:
@@ -51,12 +51,12 @@ const StickerComponent = (props: stickerProps) => {
   //losing focus action
   const handleLoseFocus = (event: React.FocusEvent) => {
     switch (event.target.id) {
-      case 'header':
-        console.log('header lose focus');
+      case "header":
+        console.log("header lose focus");
         dispatch(setStickerHeader(stickerObject));
         break;
-      case 'content':
-        console.log('content lose focus');
+      case "content":
+        console.log("content lose focus");
         dispatch(setStickerContent(stickerObject));
         break;
       default:
@@ -66,8 +66,8 @@ const StickerComponent = (props: stickerProps) => {
 
   //handling submit in input elements
   const handleSubmit = (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    if (event.key === 'Enter') {
-      if (event.currentTarget.id === 'header') {
+    if (event.key === "Enter") {
+      if (event.currentTarget.id === "header") {
         dispatch(setStickerHeader(stickerObject));
         event.currentTarget.blur();
       }
@@ -93,7 +93,7 @@ const StickerComponent = (props: stickerProps) => {
           onKeyDown={handleSubmit}
           onBlur={handleLoseFocus}
         />
-        <button onClick={handleDeleteSticker}>{'x'}</button>
+        <button onClick={handleDeleteSticker}>{"x"}</button>
       </div>
       <textarea
         id="content"

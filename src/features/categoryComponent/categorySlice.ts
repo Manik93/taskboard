@@ -1,23 +1,23 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
-import { categoryObject, stickerObject } from '../../app/types';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../../app/store";
+import { categoryObject, stickerObject } from "../../app/types";
 
 export interface categoryState {
   value: categoryObject[];
-  status: 'idle' | 'loading' | 'failed';
+  status: "idle" | "loading" | "failed";
 }
 
 const initialState: categoryState = {
   value: [],
-  status: 'idle',
+  status: "idle",
 };
 
 export const categorySlice = createSlice({
-  name: 'category',
+  name: "category",
   initialState,
   reducers: {
     addCategory: (state, action: PayloadAction<categoryObject>) => {
-      console.log('addCategoryAction');
+      console.log("addCategoryAction");
       state.value = [...state.value, action.payload];
     },
     deleteCategory: (state, action: PayloadAction<number>) => {
@@ -25,7 +25,7 @@ export const categorySlice = createSlice({
       state.value = newState;
     },
     addStickerToCategory: (state, action: PayloadAction<stickerObject>) => {
-      console.log('addStickerAction');
+      console.log("addStickerAction");
       for (let i = 0; i < state.value.length; i++) {
         if (state.value[i].categoryTaskState === action.payload.stickerTaskState) {
           state.value[i].data.push(action.payload);

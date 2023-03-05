@@ -1,6 +1,6 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import stickerReducer from '../features/stickerComponent/stickerSlice';
-import categoryReducer from '../features/categoryComponent/categorySlice';
+import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import stickerReducer from "../features/stickerComponent/stickerSlice";
+import categoryReducer from "../features/categoryComponent/categorySlice";
 
 export const store = configureStore({
   reducer: {

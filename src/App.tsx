@@ -2,10 +2,8 @@ import { categoryObject, stickerObject } from "./app/types";
 import "./App.css";
 import { useSelector } from "react-redux";
 import { RootState } from "./app/store";
-import ControlPanel from "./features/controlPanel/ControlPanel";
-import { useEffect } from "react";
-import CategoryComponent from "./features/categoryComponent/CategoryComponent";
 import BoardComponent from "./features/boardComponent/BoardComponent";
+import BoardControlPanel from "./features/boardControlPanel/BoardControlPanel";
 
 function App() {
   console.log("AppComponent:Rendered");
@@ -17,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <ControlPanel />
+      <BoardControlPanel />
       <BoardComponent tasksList={stickersStore} categoryList={taskStateStore} />
     </div>
   );

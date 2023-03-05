@@ -14,3 +14,8 @@ export type categoryObject = {
   categoryTaskState: string;
   data: stickerObject[];
 };
+
+export type boardObject = {
+  name: string;
+  categoryList: categoryObject[];
+};

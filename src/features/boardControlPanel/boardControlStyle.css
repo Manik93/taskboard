@@ -1,0 +1,61 @@
+.boardControlPanel {
+  border-right: 2px solid black;
+  height: inherit;
+  max-width: 15%;
+  min-width: 10%;
+  width: 15%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-direction: row;
+  margin: 5%;
+}
+
+.header > span {
+  font-size: larger;
+  font-weight: 700;
+}
+
+.boardControlPanel > hr {
+  border: 1px solid #8b8b8b;
+}
+
+.boardControlPanel > ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.boardControlPanel > ul > li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d3d3d3;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.boardControlPanel > ul > li :hover {
+  display: inherit;
+  background-color: #e4e4e4;
+}
+
+.boardControlPanel > ul > li > h2 {
+  font-size: smaller;
+  font-weight: 600;
+  margin-left: 5%;
+}
+
+.boardControlPanel > ul > li > button {
+  padding: 0 5px;
+  margin: 0 5%;
+}
+
+.boardControlPanel > hr {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

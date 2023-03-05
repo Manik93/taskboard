@@ -1,8 +1,12 @@
 .App {
+  display: flex;
   text-align: center;
   background-size: 100% 100%;
   background-color: #f5f5f5;
   height: 768px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .App-logo {
@@ -39,11 +43,4 @@
   100% {
     transform: translateY(0px);
   }
-}
-
-.taskboard {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-between;
 }

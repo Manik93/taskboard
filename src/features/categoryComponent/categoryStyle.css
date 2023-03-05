@@ -1,0 +1,52 @@
+.boardComponent {
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  margin-top: 3px;
+  width: 33.3%;
+}
+
+.categoryTitle {
+  display: inherit;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 80%;
+  margin: 0 auto 10px auto;
+}
+
+.categoryTitle > h1 {
+  text-align: left;
+  margin: 0;
+  font-size: larger;
+  font-weight: 500;
+}
+
+.categoryTitle > button {
+  background: none;
+  outline: none;
+  border: none;
+  color: #ff0000;
+}
+
+.stickersList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 5px 0 5px;
+}
+
+.stickersListItem {
+  margin: 0 5% 5% 5%;
+}
+
+.addSticker {
+  border: 1px solid #00000073;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px lightgrey;
+  width: 80%;
+  font-weight: 500;
+  font-size: x-large;
+  margin: 0 auto;
+  margin-bottom: 5%;
+}

@@ -1,0 +1,36 @@
+.controlPanel {
+  height: 50px;
+  background: #ffffff;
+  border-bottom: 2px solid #6e6d6d;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.panelElements {
+  display: inherit;
+  gap: 10px;
+  margin-left: 2%;
+}
+
+.newCategory {
+  border: none;
+  background: none;
+  font-size: large;
+  font-weight: 600;
+  height: 80%;
+}
+
+.underline {
+  border: none;
+}
+
+.underline::after {
+  content: '\00a0';
+  background: linear-gradient(0deg, #f5f5f5 60%, #6e6d6d 100%);
+  background-size: 100% 15px;
+  background-repeat: no-repeat;
+  float: left;
+  width: 100%;
+}

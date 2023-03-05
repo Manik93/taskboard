@@ -5,6 +5,7 @@ import { RootState } from "./app/store";
 import ControlPanel from "./features/controlPanel/ControlPanel";
 import { useEffect } from "react";
 import CategoryComponent from "./features/categoryComponent/CategoryComponent";
+import BoardComponent from "./features/boardComponent/BoardComponent";
 
 function App() {
   console.log("AppComponent:Rendered");
@@ -17,18 +18,7 @@ function App() {
   return (
     <div className="App">
       <ControlPanel />
-      <div className="taskboard">
-        {taskStateStore.map((item, key) => {
-          console.log("Mapping taskStateStore:", item.data, item.categoryTaskState);
-          return (
-            <CategoryComponent tasksList={stickersStore} taskState={item.categoryTaskState} categoryObject={item} />
-          );
-        })}
-        {/*
-        <CategoryComponent tasksList={stickersStore} taskState="todo" />
-        <CategoryComponent tasksList={stickersStore} taskState="inprogress" />
-        <CategoryComponent tasksList={stickersStore} taskState="done" />*/}
-      </div>
+      <BoardComponent tasksList={stickersStore} categoryList={taskStateStore} />
     </div>
   );
 }

@@ -25,14 +25,14 @@ export const stickerSlice = createSlice({
     setStickerHeader: (state, action: PayloadAction<stickerObject>) => {
       for (let i = 0; i < state.value.length; i++) {
         if (state.value[i].stickerID === action.payload.stickerID) {
-          state.value[i].data.header = action.payload.data.header;
+          state.value[i].stickerData.header = action.payload.stickerData.header;
         }
       }
     },
     setStickerContent: (state, action: PayloadAction<stickerObject>) => {
       for (let i = 0; i < state.value.length; i++) {
         if (state.value[i].stickerID === action.payload.stickerID) {
-          state.value[i].data.content = action.payload.data.content;
+          state.value[i].stickerData.content = action.payload.stickerData.content;
         }
       }
     },
@@ -49,6 +49,6 @@ export const stickerSlice = createSlice({
 
 export const { addSticker, deleteSticker, setStickerHeader, setStickerContent } = stickerSlice.actions;
 
-export const selectSticker = (state: RootState) => state.stickers;
+//export const selectSticker = (state: RootState) => state.stickers;
 
 export default stickerSlice.reducer;

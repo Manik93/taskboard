@@ -1,14 +1,17 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import stickerReducer from "../features/stickerComponent/stickerSlice";
-import categoryReducer from "../features/categoryComponent/categorySlice";
+import { saveState } from "./helpers";
 import boardsReducer from "../features/boardComponent/boardSlice";
 
 export const store = configureStore({
   reducer: {
-    stickers: stickerReducer,
-    category: categoryReducer,
     boards: boardsReducer,
   },
+});
+
+store.subscribe(() => {
+  saveState({
+    boards: store.getState().boards,
+  });
 });
 
 export type AppDispatch = typeof store.dispatch;

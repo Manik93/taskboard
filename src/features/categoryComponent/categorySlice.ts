@@ -27,16 +27,18 @@ export const categorySlice = createSlice({
     addStickerToCategory: (state, action: PayloadAction<stickerObject>) => {
       console.log("addStickerAction");
       for (let i = 0; i < state.value.length; i++) {
-        if (state.value[i].categoryTaskState === action.payload.stickerTaskState) {
-          state.value[i].data.push(action.payload);
+        if (state.value[i].categoryName === action.payload.stickerTaskState) {
+          state.value[i].stickerList.push(action.payload);
         }
       }
     },
     deleteStickerFromCategory: (state, action: PayloadAction<stickerObject>) => {
       for (let i = 0; i < state.value.length; i++) {
-        for (let j = 0; j < state.value[i].data.length; j++) {
-          if (state.value[i].data[j].stickerID === action.payload.stickerID) {
-            state.value[i].data = state.value[i].data.filter((item) => item.stickerID !== action.payload.stickerID);
+        for (let j = 0; j < state.value[i].stickerList.length; j++) {
+          if (state.value[i].stickerList[j].stickerID === action.payload.stickerID) {
+            state.value[i].stickerList = state.value[i].stickerList.filter(
+              (item) => item.stickerID !== action.payload.stickerID
+            );
           }
         }
       }
@@ -47,6 +49,6 @@ export const categorySlice = createSlice({
 
 export const { addCategory, deleteCategory, addStickerToCategory, deleteStickerFromCategory } = categorySlice.actions;
 
-export const selectCategory = (state: RootState) => state.category;
+//export const selectCategory = (state: RootState) => state.category;
 
 export default categorySlice.reducer;

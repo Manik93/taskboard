@@ -20,6 +20,9 @@
 }
 
 .boardControlPanel > hr {
+  margin: 0;
+  padding: 0;
+  list-style: none;
   border: 1px solid #8b8b8b;
 }
 
@@ -29,33 +32,9 @@
   list-style: none;
 }
 
-.boardControlPanel > ul > li {
+.boardControlPanelItems :hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #d3d3d3;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-}
-
-.boardControlPanel > ul > li :hover {
-  display: inherit;
-  background-color: #e4e4e4;
-}
-
-.boardControlPanel > ul > li > h2 {
-  font-size: smaller;
-  font-weight: 600;
-  margin-left: 5%;
-}
-
-.boardControlPanel > ul > li > button {
-  padding: 0 5px;
-  margin: 0 5%;
-}
-
-.boardControlPanel > hr {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  background-color: #a8a8a8;
 }

@@ -1,0 +1,38 @@
+.boardControlPanelItem {
+  display: flex;
+  height: 30px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d3d3d3;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+/* .boardControlPanelItem :hover {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #971d1d;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+} */
+.itemInput {
+  font-size: smaller;
+  background: none;
+  border: none;
+  outline: none;
+  margin: 5% 0;
+  width: 80%;
+  font-weight: 600;
+  margin-left: 5%;
+}
+
+.itemButton {
+  padding: 0 5px;
+  margin: 0 5%;
+}
+.itemButton :hover {
+  padding: 0 5px;
+  margin: 0 5%;
+  border: 1px solid;
+}

@@ -1,77 +1,49 @@
 import React from "react";
+import { addBoardCatogorySticker, removeBoardCatogory } from "../boardComponent/boardSlice";
 import { useAppDispatch } from "../../app/hooks";
-import { categoryObject, stickerObject } from "../../app/types";
-import { filterTasks } from "../../app/helpers";
-import { addStickerToCategory, deleteCategory } from "../categoryComponent/categorySlice";
+import { categoryObject } from "../../app/types";
+import { newSticker } from "../../app/helpers";
 import StickerComponent from "../stickerComponent/StickerComponent";
 import "./categoryStyle.css";
-import { addSticker } from "../stickerComponent/stickerSlice";
 
 type categoryProps = {
-  tasksList: stickerObject[];
-  taskState: string;
   categoryObject: categoryObject;
   children?: React.ReactNode;
 };
 
-//generate new sticker for current category
-const newSticker = (category: string) => {
-  //generate new sticker id
-  const stickerID: number = parseInt(Math.random().toString().slice(2));
-  const sticker: stickerObject = {
-    stickerID: stickerID,
-    stickerTaskState: category,
-    data: { header: "", content: "" },
-  };
-  return sticker;
-};
-
-function CategoryComponent({ tasksList, categoryObject }: categoryProps) {
-  console.log("CategoryComponent " + categoryObject.categoryTaskState + ":Rendered", tasksList);
+function CategoryComponent({ categoryObject }: categoryProps) {
+  console.log("CategoryComponent " + categoryObject.categoryName + ":Rendered");
   const dispatch = useAppDispatch();
-  const header: string = categoryObject.categoryTaskState;
+  const categoryName: string = categoryObject.categoryName;
 
-  const filteredTasks = filterTasks(tasksList, categoryObject.categoryTaskState);
-  console.log("CATEGORY_COMPONENT:", filteredTasks, header);
-  //add sticker button handler
+  // Add new sticker to current category
   const OnClickAddStickerHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-    dispatch(addStickerToCategory(newSticker(header)));
-    dispatch(addSticker(newSticker(header)));
+    dispatch(addBoardCatogorySticker(newSticker(categoryObject)));
   };
 
-  const handleOnClickDelete = () => {
-    dispatch(deleteCategory(categoryObject.categoryID));
+  // Remove current category from board
+  const DeleteCategoryHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+    dispatch(removeBoardCatogory(categoryObject));
   };
 
   return (
     <div className="boardComponent">
       <div className="categoryTitle">
-        <h1>{header}</h1>
-        <button onClick={handleOnClickDelete}>{"x"}</button>
+        <h1>{categoryName}</h1>
+        <button onClick={DeleteCategoryHandler}>{"x"}</button>
       </div>
-
       <button className="addSticker" onClick={OnClickAddStickerHandler}>
         {"+"}
       </button>
-      {/* //replace to categoryObject */}
-      {/* {filteredTasks.map((item, key) => {
-        return (
-          <ul className="stickersList" key={key}>
+      <ul className="stickersList">
+        {categoryObject.stickerList.map((item, key) => {
+          return (
             <li className="stickersListItem">
-              <StickerComponent stickerObj={item} />
+              <StickerComponent key={key} stickerObj={item} />
             </li>
-          </ul>
-        );
-      })} */}
-      {categoryObject.data.map((item, key) => {
-        return (
-          <ul className="stickersList" key={key}>
-            <li className="stickersListItem">
-              <StickerComponent stickerObj={item} />
-            </li>
-          </ul>
-        );
-      })}
+          );
+        })}
+      </ul>
     </div>
   );
 }

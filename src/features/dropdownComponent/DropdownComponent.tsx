@@ -1,34 +1,23 @@
-import React, { useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from '../../app/hooks';
-import { RootState } from '../../app/store';
-import { categoryObject, stickerObject } from '../../app/types';
-import { addCategory } from '../categoryComponent/categorySlice';
-import './dropdownStyle.css';
+import React, { useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import { newCategory } from "../../app/helpers";
+import { useAppDispatch } from "../../app/hooks";
+import { RootState } from "../../app/store";
+import { boardObject, categoryObject, stickerObject } from "../../app/types";
+import { addBoardCatogory } from "../boardComponent/boardSlice";
+import { addCategory } from "../categoryComponent/categorySlice";
+import "./dropdownStyle.css";
 
-interface dropdownProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+interface dropdownProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  boardObject: boardObject;
+}
 
-//new category object with stickers
-const newCategory = (stickersList: stickerObject[], name: string) => {
-  //generate new category id
-  const categoryID: number = parseInt(Math.random().toString().slice(5));
-  //filtering stickers from stickersList for category by name
-  const categoryStickers = stickersList.filter((item) => item.stickerTaskState === name);
-  //console.log('Stickers of ' + name + ':', categoryStickers);
-  const category: categoryObject = {
-    categoryID: categoryID,
-    categoryTaskState: name,
-    data: categoryStickers,
-  };
-  return category;
-};
-
-const DropdownComponent: React.FC<dropdownProps> = ({ onClick, className, ...props }) => {
-  console.log('DropDownComponent:Rendered');
-  const stickersStore: stickerObject[] = useSelector((state: RootState) => state.stickers.value);
-  const categoryStore: categoryObject[] = useSelector((state: RootState) => state.category.value);
+const DropdownComponent: React.FC<dropdownProps> = ({ onClick, className, boardObject, ...props }) => {
+  console.log("DropDownComponent:Rendered");
+  // const stickersStore: stickerObject[] = useSelector((state: RootState) => state.stickers.value);
+  // const categoryStore: categoryObject[] = useSelector((state: RootState) => state.category.value);
   const inputName = useRef<HTMLInputElement>(null);
-  const [categoryName, setCategoryName] = useState<string>('');
+  const [categoryName, setCategoryName] = useState<string>("");
   const [open, setOpen] = React.useState<boolean>(false);
   const dispatch = useAppDispatch();
 
@@ -46,8 +35,8 @@ const DropdownComponent: React.FC<dropdownProps> = ({ onClick, className, ...pro
 
   //try to merge or simplify
   const checkExistName = (newCategoryName: string) => {
-    for (let i = 0; i < categoryStore.length; i++) {
-      if (categoryStore[i].categoryTaskState === newCategoryName) {
+    for (let i = 0; i < boardObject.categoryList.length; i++) {
+      if (boardObject.categoryList[i].categoryName === newCategoryName) {
         //exist
         return true;
       }
@@ -57,21 +46,24 @@ const DropdownComponent: React.FC<dropdownProps> = ({ onClick, className, ...pro
   };
 
   const handleSubmit = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    console.log('checkExistName', checkExistName(categoryName));
-    if (event.key === 'Enter') {
+    console.log("checkExistName", checkExistName(categoryName));
+    if (event.key === "Enter") {
       if (categoryName.length < 1) {
         if (inputName.current) {
-          inputName.current.placeholder = 'Empty';
+          inputName.current.placeholder = "Empty";
         }
       } else {
         if (checkExistName(categoryName)) {
           if (inputName.current) {
-            setCategoryName('');
-            inputName.current.placeholder = 'Exist';
+            setCategoryName("");
+            inputName.current.placeholder = "Exist";
           }
         } else {
-          dispatch(addCategory(newCategory(stickersStore, categoryName)));
-          setCategoryName('');
+          //works!
+          dispatch(addBoardCatogory(newCategory(/* stickersStore, */ categoryName, boardObject.boardID)));
+          //dispatch(addCategory(newCategory(stickersStore, categoryName, boardObject.boardID)));
+
+          setCategoryName("");
           setOpen(false);
         }
       }
@@ -82,17 +74,19 @@ const DropdownComponent: React.FC<dropdownProps> = ({ onClick, className, ...pro
     //add check for same name
     if (categoryName.length < 1) {
       if (inputName.current) {
-        inputName.current.placeholder = 'Empty';
+        inputName.current.placeholder = "Empty";
       }
     } else {
       if (checkExistName(categoryName)) {
         if (inputName.current) {
-          setCategoryName('');
-          inputName.current.placeholder = 'Exist';
+          setCategoryName("");
+          inputName.current.placeholder = "Exist";
         }
       } else {
-        dispatch(addCategory(newCategory(stickersStore, categoryName)));
-        setCategoryName('');
+        //works!
+        dispatch(addBoardCatogory(newCategory(/* stickersStore, */ categoryName, boardObject.boardID)));
+        //dispatch(addCategory(newCategory(stickersStore, categoryName, boardObject.boardID)));
+        setCategoryName("");
         setOpen(false);
       }
     }
@@ -101,7 +95,7 @@ const DropdownComponent: React.FC<dropdownProps> = ({ onClick, className, ...pro
   return (
     <div className={className}>
       <button className="newCategory" onClick={handleOpen}>
-        {'+ New category'}
+        {"+ New category"}
       </button>
       {open ? (
         <ul className="menu">

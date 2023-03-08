@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch } from "../../app/hooks";
 import { stickerObject } from "../../app/types";
-import { deleteStickerFromCategory } from "../categoryComponent/categorySlice";
-import { deleteSticker, setStickerContent, setStickerHeader } from "./stickerSlice";
+import { removeBoardCatogorySticker } from "../boardComponent/boardSlice";
+import { setStickerHeader, setStickerContent } from "../boardComponent/boardSlice";
 import "./stickerStyle.css";
 
 //StickerComponent props type
@@ -11,30 +11,21 @@ type stickerProps = {
 };
 
 const StickerComponent = (props: stickerProps) => {
-  console.log(
-    " -StickerComponent " + props.stickerObj.stickerID + " " + props.stickerObj.stickerTaskState + ":Rendered"
-  );
-  //dispatch for redux actions
+  console.log(" -StickerComponent " + props.stickerObj.stickerData.header + ":Rendered");
+
+  const [stickerObject, setStickerObject] = useState<stickerObject>(props.stickerObj);
+  const [header, setHeader] = useState<string>(stickerObject.stickerData.header as string);
+  const [content, setContent] = useState<string>(stickerObject.stickerData.content as string);
   const dispatch = useAppDispatch();
 
-  //getting object from store throught props
-  const [stickerObject, setStickerObject] = useState<stickerObject>(props.stickerObj);
-
-  //state for header
-  const [header, setHeader] = useState<string>(stickerObject.data.header as string);
-
-  //state for content
-  const [content, setContent] = useState<string>(stickerObject.data.content as string);
-
-  //renew sticker object data
+  // Renew sticker object data
   useEffect(() => {
     setStickerObject((prevState) => ({
       ...prevState,
-      data: { header: header, content: content },
+      stickerData: { header: header, content: content },
     }));
   }, [header, content]);
 
-  //hadling changes in input elements
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     switch (event.target.id) {
       case "header":
@@ -48,11 +39,9 @@ const StickerComponent = (props: stickerProps) => {
     }
   };
 
-  //losing focus action
   const handleLoseFocus = (event: React.FocusEvent) => {
     switch (event.target.id) {
       case "header":
-        console.log("header lose focus");
         dispatch(setStickerHeader(stickerObject));
         break;
       case "content":
@@ -64,8 +53,7 @@ const StickerComponent = (props: stickerProps) => {
     }
   };
 
-  //handling submit in input elements
-  const handleSubmit = (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const submitOnEnterPressed = (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (event.key === "Enter") {
       if (event.currentTarget.id === "header") {
         dispatch(setStickerHeader(stickerObject));
@@ -75,8 +63,7 @@ const StickerComponent = (props: stickerProps) => {
   };
 
   const handleDeleteSticker = (event: React.MouseEvent<HTMLButtonElement>) => {
-    dispatch(deleteSticker(props.stickerObj.stickerID));
-    dispatch(deleteStickerFromCategory(props.stickerObj));
+    dispatch(removeBoardCatogorySticker(stickerObject));
   };
 
   return (
@@ -90,7 +77,7 @@ const StickerComponent = (props: stickerProps) => {
           placeholder="Sticker header"
           value={header}
           onChange={handleOnChange}
-          onKeyDown={handleSubmit}
+          onKeyDown={submitOnEnterPressed}
           onBlur={handleLoseFocus}
         />
         <button onClick={handleDeleteSticker}>{"x"}</button>
@@ -104,7 +91,6 @@ const StickerComponent = (props: stickerProps) => {
         value={content}
         placeholder="Type text here"
         onChange={handleOnChange}
-        onKeyDown={handleSubmit}
         onBlur={handleLoseFocus}
       />
     </div>

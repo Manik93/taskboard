@@ -5,17 +5,21 @@ export type stickerData = {
 
 export type stickerObject = {
   stickerID: number;
+  parentCategoryID: number;
   stickerTaskState: string;
-  data: stickerData;
+  stickerData: stickerData;
 };
 
 export type categoryObject = {
+  parentBoardID: number;
   categoryID: number;
-  categoryTaskState: string;
-  data: stickerObject[];
+  categoryName: string;
+  stickerList: stickerObject[];
 };
 
 export type boardObject = {
+  boardID: number;
+  isActive: boolean;
   name: string;
   categoryList: categoryObject[];
 };

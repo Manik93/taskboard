@@ -1,26 +1,23 @@
-import React from "react";
-import { categoryObject, stickerObject } from "../../app/types";
+import { boardObject, categoryObject } from "../../app/types";
 import CategoryComponent from "../categoryComponent/CategoryComponent";
 import ControlPanel from "../controlPanel/ControlPanel";
 import "./boardStyle.css";
 
 type boardProps = {
-  tasksList: stickerObject[];
-  categoryList: categoryObject[];
+  boardObject: boardObject;
 };
 
-const BoardComponent = ({ tasksList, categoryList }: boardProps) => {
+const BoardComponent = ({ boardObject }: boardProps) => {
+  const categoryList: categoryObject[] = boardObject.categoryList;
+
   return (
     <div className="taskboard">
-      <ControlPanel />
-      {categoryList.map((item, key) => {
-        console.log("Mapping taskStateStore:", item.data, item.categoryTaskState);
-        return <CategoryComponent tasksList={tasksList} taskState={item.categoryTaskState} categoryObject={item} />;
-      })}
-      {/*
-  <CategoryComponent tasksList={stickersStore} taskState="todo" />
-  <CategoryComponent tasksList={stickersStore} taskState="inprogress" />
-  <CategoryComponent tasksList={stickersStore} taskState="done" />*/}
+      <ControlPanel boardObject={boardObject} />
+      <div className="categoryList">
+        {categoryList.map((item, key) => {
+          return <CategoryComponent key={key} categoryObject={item} />;
+        })}
+      </div>
     </div>
   );
 };

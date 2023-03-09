@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { boardObject, categoryObject } from "../../app/types";
-import { addBoardCatogory } from "../boardComponent/boardSlice";
+import { addBoardCatogory, deleteBoard } from "../boardComponent/boardSlice";
 import { useAppDispatch } from "../../app/hooks";
 import DropdownComponent from "../dropdownComponent/DropdownComponent";
 import "./controlPanelStyle.css";
@@ -23,12 +23,19 @@ const ControlPanel = ({ boardObject }: controlPanelProps) => {
   const onClickPlaceholder = (event: React.MouseEvent<HTMLButtonElement>) => {
     console.log("Export");
   };
+  // Board item button click handler
+  const onButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    dispatch(deleteBoard(boardObject.boardID));
+  };
 
   return (
     <>
       <div className="controlPanel">
         <div className="panelElements">
           <DropdownComponent boardObject={boardObject} />
+          <button className="newCategory" onClick={onButtonClick}>
+            {"x Delete"}
+          </button>
           <button className="newCategory" onClick={onClickPlaceholder}>
             {"=> Export"}
           </button>

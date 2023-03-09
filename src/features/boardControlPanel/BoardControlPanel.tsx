@@ -1,17 +1,16 @@
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { createBoard, deleteBoard } from "../boardComponent/boardSlice";
+import { createBoard } from "../boardComponent/boardSlice";
+import { useAppDispatch } from "../../app/hooks";
 import { newBoard } from "../../app/helpers";
-import { RootState } from "../../app/store";
 import { boardObject } from "../../app/types";
-import "./boardControlStyle.css";
-import { useState } from "react";
 import BoardControlPanelItem from "../boardControlPanelItem/BoardControlPanelItem";
+import "./boardControlStyle.css";
 
 type boardControlProps = {
   boardsList: boardObject[];
 };
 
 const BoardControlPanel = ({ boardsList }: boardControlProps) => {
+  console.log("BoardControlPanel:Render");
   const dispatch = useAppDispatch();
 
   const addBoardHandle = () => {
@@ -25,7 +24,7 @@ const BoardControlPanel = ({ boardsList }: boardControlProps) => {
         <button onClick={addBoardHandle}>{"+"}</button>
       </div>
       <hr />
-      <ul className="boardControlPanelItems">
+      <ul className="ControlPanelItems">
         {boardsList.map((item, key) => {
           return <BoardControlPanelItem key={key} boardObject={item} />;
         })}

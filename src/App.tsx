@@ -10,9 +10,6 @@ import { BoardsState } from "./features/boardComponent/boardSlice";
 const App = () => {
   console.log("AppComponent:Rendered");
 
-  const localStorageData: BoardsState = loadState();
-  console.log(localStorageData.value);
-
   const boardsList: boardObject[] = useAppSelector((state: RootState) => state.boards.value);
 
   return (

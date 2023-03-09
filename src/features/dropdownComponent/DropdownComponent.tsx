@@ -5,7 +5,6 @@ import { useAppDispatch } from "../../app/hooks";
 import { RootState } from "../../app/store";
 import { boardObject, categoryObject, stickerObject } from "../../app/types";
 import { addBoardCatogory } from "../boardComponent/boardSlice";
-import { addCategory } from "../categoryComponent/categorySlice";
 import "./dropdownStyle.css";
 
 interface dropdownProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

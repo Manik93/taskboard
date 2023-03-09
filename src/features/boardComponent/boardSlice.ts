@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { loadState } from "../../app/helpers";
 import { RootState } from "../../app/store";
 import { boardObject, categoryObject, stickerObject } from "../../app/types";
 
@@ -80,9 +81,12 @@ export const boardSlice = createSlice({
         }
       }
     },
-    changeBoardName: (state, action: PayloadAction<string>) => {
-      /* const newState = state.value.filter((item) => item.stickerID === action.payload);
-        state.value = newState; */
+    changeBoardName: (state, action: PayloadAction<boardObject>) => {
+      for (let i = 0; i < state.value.length; i++) {
+        if (state.value[i].boardID === action.payload.boardID && state.value[i].isActive) {
+          state.value[i].name = action.payload.name;
+        }
+      }
     },
     // Setting sticker header
     setStickerHeader: (state, action: PayloadAction<stickerObject>) => {

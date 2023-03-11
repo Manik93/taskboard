@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { loadState } from "../../app/helpers";
+//import { loadState } from "../../app/helpers";
 import { RootState } from "../../app/store";
 import { boardObject, categoryObject, stickerObject } from "../../app/types";
 
@@ -81,6 +81,14 @@ export const boardSlice = createSlice({
         }
       }
     },
+    // Clearing active boardObject focus by boardID
+    blurActiveBoard: (state, action: PayloadAction<number>) => {
+      for (let i = 0; i < state.value.length; i++) {
+        if (state.value[i].boardID === action.payload) {
+          state.value[i].isActive = false;
+        }
+      }
+    },
     changeBoardName: (state, action: PayloadAction<boardObject>) => {
       for (let i = 0; i < state.value.length; i++) {
         if (state.value[i].boardID === action.payload.boardID && state.value[i].isActive) {
@@ -138,6 +146,7 @@ export const {
   addBoardCatogorySticker,
   removeBoardCatogorySticker,
   setActiveBoard,
+  blurActiveBoard,
   changeBoardName,
   setStickerHeader,
   setStickerContent,

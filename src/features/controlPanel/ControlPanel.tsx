@@ -1,4 +1,6 @@
 import React from "react";
+import { XSquare } from "react-feather";
+
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { boardObject, categoryObject } from "../../app/types";
@@ -33,11 +35,10 @@ const ControlPanel = ({ boardObject }: controlPanelProps) => {
       <div className="controlPanel">
         <div className="panelElements">
           <DropdownComponent boardObject={boardObject} />
-          <button className="newCategory" onClick={onButtonClick}>
-            {"x Delete"}
-          </button>
-          <button className="newCategory" onClick={onClickPlaceholder}>
-            {"=> Export"}
+        </div>
+        <div className="boardContols">
+          <button className="boardDelete" onClick={onButtonClick} title="Delete board">
+            <XSquare />
           </button>
         </div>
       </div>

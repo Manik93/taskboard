@@ -26,7 +26,11 @@
   background: none;
   outline: none;
   border: none;
-  color: #ff0000;
+  color: #000;
+}
+
+.categoryTitle > button :hover {
+  color: #d11c1c;
 }
 
 .stickersList {

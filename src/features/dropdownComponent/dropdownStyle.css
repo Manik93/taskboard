@@ -6,9 +6,17 @@
   height: 80%;
 }
 
-/* .dropdown {
-  position: relative;
-} */
+.categoryAdd {
+  display: block;
+}
+
+.buttonContent {
+  display: contents;
+}
+
+.buttonContent > svg :hover {
+  color: aquamarine;
+}
 
 .menu {
   position: absolute;

@@ -1,5 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import { PlusCircle } from "react-feather";
 import { newCategory } from "../../app/helpers";
 import { useAppDispatch } from "../../app/hooks";
 import { RootState } from "../../app/store";
@@ -13,12 +14,22 @@ interface dropdownProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const DropdownComponent: React.FC<dropdownProps> = ({ onClick, className, boardObject, ...props }) => {
   console.log("DropDownComponent:Rendered");
-  // const stickersStore: stickerObject[] = useSelector((state: RootState) => state.stickers.value);
-  // const categoryStore: categoryObject[] = useSelector((state: RootState) => state.category.value);
   const inputName = useRef<HTMLInputElement>(null);
   const [categoryName, setCategoryName] = useState<string>("");
   const [open, setOpen] = React.useState<boolean>(false);
   const dispatch = useAppDispatch();
+  const itemRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true);
+  }, []);
+
+  const handleClickOutside = (event: any) => {
+    if (!itemRef.current?.contains(event.target)) {
+      setOpen(false);
+    } else {
+    }
+  };
 
   const handleOpen = () => {
     setOpen(!open);
@@ -58,9 +69,7 @@ const DropdownComponent: React.FC<dropdownProps> = ({ onClick, className, boardO
             inputName.current.placeholder = "Exist";
           }
         } else {
-          //works!
-          dispatch(addBoardCatogory(newCategory(/* stickersStore, */ categoryName, boardObject.boardID)));
-          //dispatch(addCategory(newCategory(stickersStore, categoryName, boardObject.boardID)));
+          dispatch(addBoardCatogory(newCategory(categoryName, boardObject.boardID)));
 
           setCategoryName("");
           setOpen(false);
@@ -82,9 +91,7 @@ const DropdownComponent: React.FC<dropdownProps> = ({ onClick, className, boardO
           inputName.current.placeholder = "Exist";
         }
       } else {
-        //works!
-        dispatch(addBoardCatogory(newCategory(/* stickersStore, */ categoryName, boardObject.boardID)));
-        //dispatch(addCategory(newCategory(stickersStore, categoryName, boardObject.boardID)));
+        dispatch(addBoardCatogory(newCategory(categoryName, boardObject.boardID)));
         setCategoryName("");
         setOpen(false);
       }
@@ -92,12 +99,15 @@ const DropdownComponent: React.FC<dropdownProps> = ({ onClick, className, boardO
   };
 
   return (
-    <div className={className}>
-      <button className="newCategory" onClick={handleOpen}>
-        {"+ New category"}
+    <div className="categoryAdd">
+      <button className="newColumn" onClick={handleOpen}>
+        <div className="buttonContent">
+          <PlusCircle />
+          <span>{"Add column"}</span>
+        </div>
       </button>
       {open ? (
-        <ul className="menu">
+        <ul ref={itemRef} className="menu">
           <li className="menu-item">
             <input
               type="text"

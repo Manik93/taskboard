@@ -20,7 +20,11 @@
   background: none;
   outline: none;
   border: none;
-  color: #ff0000;
+  color: #000;
+}
+
+.stickerHeader > button :hover {
+  color: #d11c1c;
 }
 
 .stickerHeaderInput {

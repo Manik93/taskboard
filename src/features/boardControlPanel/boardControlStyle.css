@@ -10,11 +10,22 @@
   align-items: flex-end;
   flex-direction: row;
   margin: 5%;
+  user-select: none;
 }
 
 .header > span {
   font-size: larger;
   font-weight: 700;
+}
+.header > button {
+  display: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+.header > button :hover {
+  color: #32ad32;
 }
 
 .boardControlPanel > hr {

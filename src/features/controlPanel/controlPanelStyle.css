@@ -1,25 +1,47 @@
 .controlPanel {
-  height: 50px;
+  padding: 1%;
   background: #ffffff;
   border-bottom: 2px solid #6e6d6d;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
 }
 
 .panelElements {
   display: inherit;
   gap: 10px;
-  margin-left: 2%;
 }
 
-.newCategory {
+.newColumn {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex-direction: row;
+  padding: 0;
+  gap: 5px;
   border: none;
   background: none;
   font-size: large;
   font-weight: 600;
-  height: 80%;
+  user-select: none;
+}
+
+/* .newColumn :hover {
+  color: green;
+} */
+
+.boardDelete {
+  border: none;
+  display: flex;
+  background: none;
+  font-size: large;
+  font-weight: 600;
+  padding: 0;
+}
+
+.boardDelete :hover {
+  color: #d11c1c;
 }
 
 .underline {

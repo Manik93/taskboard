@@ -1,4 +1,5 @@
 import React from "react";
+import { XCircle, Plus } from "react-feather";
 import { addBoardCatogorySticker, removeBoardCatogory } from "../boardComponent/boardSlice";
 import { useAppDispatch } from "../../app/hooks";
 import { categoryObject } from "../../app/types";
@@ -30,10 +31,12 @@ function CategoryComponent({ categoryObject }: categoryProps) {
     <div className="boardComponent">
       <div className="categoryTitle">
         <h1>{categoryName}</h1>
-        <button onClick={DeleteCategoryHandler}>{"x"}</button>
+        <button title="Delete column" onClick={DeleteCategoryHandler}>
+          <XCircle />
+        </button>
       </div>
-      <button className="addSticker" onClick={OnClickAddStickerHandler}>
-        {"+"}
+      <button title="Create sticker" className="addSticker" onClick={OnClickAddStickerHandler}>
+        <Plus />
       </button>
       <ul className="stickersList">
         {categoryObject.stickerList.map((item, key) => {

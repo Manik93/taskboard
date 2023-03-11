@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { changeBoardName, setActiveBoard } from "../boardComponent/boardSlice";
+import React, { useEffect, useRef, useState } from "react";
+import { blurActiveBoard, changeBoardName, setActiveBoard } from "../boardComponent/boardSlice";
 import { useAppDispatch } from "../../app/hooks";
 import { boardObject } from "../../app/types";
 import "./controlPanelItemStyle.css";

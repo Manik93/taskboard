@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { X } from "react-feather";
 import { useAppDispatch } from "../../app/hooks";
 import { stickerObject } from "../../app/types";
 import { removeBoardCatogorySticker } from "../boardComponent/boardSlice";
@@ -80,7 +81,9 @@ const StickerComponent = (props: stickerProps) => {
           onKeyDown={submitOnEnterPressed}
           onBlur={handleLoseFocus}
         />
-        <button onClick={handleDeleteSticker}>{"x"}</button>
+        <button title="Delete sticker" onClick={handleDeleteSticker}>
+          <X />
+        </button>
       </div>
       <textarea
         id="content"

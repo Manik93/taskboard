@@ -34,7 +34,7 @@ export const newBoard = () => {
 
   const board: boardObject = {
     boardID: newBoardID,
-    isActive: false,
+    isActive: true,
     name: "New board",
     categoryList: [],
   };

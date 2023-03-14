@@ -8,15 +8,51 @@
 
 .categoryAdd {
   display: block;
+  border-left: 2px solid;
+  padding-left: 5px;
 }
 
 .buttonContent {
   display: contents;
 }
 
-.buttonContent > svg :hover {
-  color: aquamarine;
+.buttonContent :hover {
+  background-color: aqua;
 }
+
+.newColumn {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  flex-direction: row;
+  padding: 0;
+  gap: 3px;
+  border: none;
+  background: none;
+  font-size: large;
+  font-weight: 600;
+  user-select: none;
+}
+
+.categoryAdd:hover {
+  /* background-color: #32ad32; */
+  text-decoration: underline;
+}
+
+#addDiv:hover #buttonPlus {
+  color: #32ad32;
+}
+
+/* .categoryAdd :hover ~ .newColumn > span {
+  color: #456645;
+} */
+/* 
+.newColumn > span :hover {
+  color: #000;
+} */
+/* .buttonContent > svg :hover {
+  color: aquamarine;
+} */
 
 .menu {
   position: absolute;
@@ -25,7 +61,7 @@
   border: 1px solid #00000096;
   border-radius: 5px;
   list-style: none;
-  margin: 10px 0 0 0;
+  margin: 0;
   padding: 0;
 }
 

@@ -99,12 +99,10 @@ const DropdownComponent: React.FC<dropdownProps> = ({ onClick, className, boardO
   };
 
   return (
-    <div className="categoryAdd">
+    <div id="addDiv" className="categoryAdd">
       <button className="newColumn" onClick={handleOpen}>
-        <div className="buttonContent">
-          <PlusCircle />
-          <span>{"Add column"}</span>
-        </div>
+        <PlusCircle id="buttonPlus" />
+        <span>{"Add column"}</span>
       </button>
       {open ? (
         <ul ref={itemRef} className="menu">

@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { blurActiveBoard, changeBoardName, setActiveBoard } from "../boardComponent/boardSlice";
 import { useAppDispatch } from "../../app/hooks";
 import { boardObject } from "../../app/types";
-import "./controlPanelItemStyle.css";
+import "./boardsPanelItemStyle.css";
 
-interface controlPanelItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+interface boardsPanelItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
   boardObject: boardObject;
 }
 
-const BoardControlPanelItem = ({ boardObject }: controlPanelItemProps) => {
+const BoardsPanelItem = ({ boardObject }: boardsPanelItemProps) => {
   console.log("BoardControlPanelItem " + boardObject.name + "[" + boardObject.boardID + "]:Render");
   const [boardObj, setBoardObj] = useState<boardObject>(boardObject);
   const [boardName, setBoardName] = useState<string>(boardObject.name);
@@ -79,4 +79,4 @@ const BoardControlPanelItem = ({ boardObject }: controlPanelItemProps) => {
   );
 };
 
-export default BoardControlPanelItem;
+export default BoardsPanelItem;

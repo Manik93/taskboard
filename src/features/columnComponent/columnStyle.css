@@ -1,18 +1,24 @@
 .boardComponent {
-  background-color: #f5f5f5;
+  background-color: #ebecf0;
   display: flex;
+  align-items: center;
   flex-direction: column;
-  margin-top: 3px;
-  width: 33.3%;
+  width: fit-content;
+  min-width: 270px;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 1px solid black;
+  border-radius: 7px;
+  margin: 0 20px 0 0;
+  padding: 7px;
 }
 
 .categoryTitle {
-  display: inherit;
+  display: flex;
   flex-direction: row;
+  width: 100%;
   justify-content: space-between;
-  align-items: baseline;
-  width: 80%;
-  margin: 0 auto 10px auto;
+  align-items: center;
 }
 
 .categoryTitle > h1 {
@@ -23,10 +29,12 @@
 }
 
 .categoryTitle > button {
+  display: inherit;
   background: none;
   outline: none;
   border: none;
   color: #000;
+  padding: 0px;
 }
 
 .categoryTitle > button :hover {
@@ -36,14 +44,20 @@
 .stickersList {
   list-style-type: none;
   margin: 0;
-  padding: 0 5px 0 5px;
+  padding: 10px 0;
+  max-width: 270px;
 }
 
 .stickersListItem {
-  margin: 0 5% 5% 5%;
+  margin: 3% 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .addSticker {
+  display: inherit;
+  justify-content: center;
   border: 1px solid #00000073;
   border-radius: 5px;
   background-color: #ffffff;
@@ -52,5 +66,4 @@
   font-weight: 500;
   font-size: x-large;
   margin: 0 auto;
-  margin-bottom: 5%;
 }

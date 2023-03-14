@@ -1,6 +1,6 @@
 import { boardObject, categoryObject } from "../../app/types";
-import CategoryComponent from "../categoryComponent/CategoryComponent";
-import ControlPanel from "../controlPanel/ControlPanel";
+import ColumnComponent from "../columnComponent/ColumnComponent";
+import BoardControlPanel from "../boardControlPanel/BoardControlPanel";
 import "./boardStyle.css";
 
 type boardProps = {
@@ -12,11 +12,13 @@ const BoardComponent = ({ boardObject }: boardProps) => {
 
   return (
     <div className="taskboard">
-      <ControlPanel boardObject={boardObject} />
-      <div className="categoryList">
-        {categoryList.map((item, key) => {
-          return <CategoryComponent key={key} categoryObject={item} />;
-        })}
+      <BoardControlPanel boardObject={boardObject} />
+      <div className="board">
+        <div className="categoryList">
+          {categoryList.map((item, key) => {
+            return <ColumnComponent key={key} categoryObject={item} />;
+          })}
+        </div>
       </div>
     </div>
   );

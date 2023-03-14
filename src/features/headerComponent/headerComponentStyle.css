@@ -1,0 +1,22 @@
+.headerTitle {
+  width: inherit;
+}
+
+.headerTitle > input {
+  outline: none;
+  padding: 0;
+  font-size: large;
+  font-weight: 600;
+}
+
+.headerTitle > h2 {
+  user-select: none;
+  text-align: start;
+  font-size: large;
+  margin: 0;
+  cursor: pointer;
+}
+
+.headerTitle > h2:hover {
+  border-bottom: groove;
+}

@@ -13,23 +13,27 @@
   gap: 10px;
 }
 
-.newColumn {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  flex-direction: row;
-  padding: 0;
-  gap: 5px;
-  border: none;
-  background: none;
-  font-size: large;
-  font-weight: 600;
-  user-select: none;
+.panelElements > span {
+  font-size: larger;
+  font-weight: 700;
 }
 
-/* .newColumn :hover {
-  color: green;
+/* .newColumn > span :hover {
+  background-color: #d11c1c;
 } */
+
+/* .newColumn :hover {
+  color: #32ad32;
+  text-decoration: underline;
+}
+
+.newColumn > div > span :hover {
+  color: #d11c1c;
+}
+ */
+#buttonContent > span {
+  color: #000000;
+}
 
 .boardDelete {
   border: none;

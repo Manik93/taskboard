@@ -1,4 +1,4 @@
-.boardComponent {
+.columnComponent {
   background-color: #ebecf0;
   display: flex;
   align-items: center;
@@ -13,7 +13,7 @@
   padding: 7px;
 }
 
-.categoryTitle {
+.columnTitle {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -21,14 +21,14 @@
   align-items: center;
 }
 
-.categoryTitle > h1 {
+.columnTitle > h1 {
   text-align: left;
   margin: 0;
   font-size: larger;
   font-weight: 500;
 }
 
-.categoryTitle > button {
+.columnTitle > button {
   display: inherit;
   background: none;
   outline: none;
@@ -37,18 +37,18 @@
   padding: 0px;
 }
 
-.categoryTitle > button :hover {
+.columnTitle > button :hover {
   color: #d11c1c;
 }
 
-.stickersList {
+.stickerList {
   list-style-type: none;
   margin: 0;
   padding: 10px 0;
   max-width: 270px;
 }
 
-.stickersListItem {
+.stickerListItem {
   margin: 3% 0;
   display: flex;
   align-items: center;

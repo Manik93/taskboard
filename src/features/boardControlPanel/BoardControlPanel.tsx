@@ -15,7 +15,7 @@ type boardControlPanelProps = {
 
 //Board control panel
 const BoardControlPanel = ({ boardObject }: boardControlPanelProps) => {
-  console.log("ControlPanelComponent:Rendered");
+  console.log("BoardControlPanel:Rendered");
   const store: RootState = useSelector((state: RootState) => state);
   // const taskStateStore: categoryObject[] = store.category.value;
   // console.log(taskStateStore);
@@ -32,8 +32,8 @@ const BoardControlPanel = ({ boardObject }: boardControlPanelProps) => {
 
   return (
     <>
-      <div className="controlPanel">
-        <div className="panelElements">
+      <div className="boardControlPanel">
+        <div className="boardControlPanelItems">
           <span>{boardObject.name}</span>
           <DropdownComponent boardObject={boardObject} />
         </div>

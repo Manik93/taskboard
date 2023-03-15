@@ -89,6 +89,15 @@ export const boardSlice = createSlice({
         }
       }
     },
+    changeBoardColumnList: (state, action: PayloadAction<categoryObject[]>) => {
+      if (action.payload.length > 1) {
+        for (let i = 0; i < state.value.length; i++) {
+          if (state.value[i].boardID === action.payload[0].parentBoardID && state.value[i].isActive) {
+            state.value[i].categoryList = action.payload;
+          }
+        }
+      }
+    },
     changeBoardName: (state, action: PayloadAction<boardObject>) => {
       for (let i = 0; i < state.value.length; i++) {
         if (state.value[i].boardID === action.payload.boardID && state.value[i].isActive) {
@@ -147,6 +156,7 @@ export const {
   removeBoardCatogorySticker,
   setActiveBoard,
   blurActiveBoard,
+  changeBoardColumnList,
   changeBoardName,
   setStickerHeader,
   setStickerContent,

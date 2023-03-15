@@ -1,4 +1,5 @@
-import { RootState } from "./store";
+import { selectBoard } from "../features/boardComponent/boardSlice";
+import { RootState, store } from "../app/store";
 import { boardObject, categoryObject, stickerObject } from "./types";
 
 export const filterTasks = (tasksList: stickerObject[], word: string) => {
@@ -29,13 +30,15 @@ export const loadState = () => {
 };
 
 export const newBoard = () => {
+  const boardList = selectBoard(store.getState());
+
   // Generating new boardID
   const newBoardID: number = parseInt(Math.random().toString().slice(8));
 
   const board: boardObject = {
     boardID: newBoardID,
-    isActive: true,
-    name: "New board",
+    isActive: false,
+    name: `Board ${boardList.value.length + 1}`,
     categoryList: [],
   };
   return board;

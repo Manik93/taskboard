@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { blurActiveBoard, changeBoardName, setActiveBoard } from "../boardComponent/boardSlice";
+import React, { useEffect, useState } from "react";
+import { changeBoardName, setActiveBoard } from "../boardComponent/boardSlice";
 import { useAppDispatch } from "../../app/hooks";
 import { boardObject } from "../../app/types";
 import "./boardsPanelItemStyle.css";
@@ -9,7 +9,7 @@ interface boardsPanelItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
 }
 
 const BoardsPanelItem = ({ boardObject }: boardsPanelItemProps) => {
-  console.log("BoardControlPanelItem " + boardObject.name + "[" + boardObject.boardID + "]:Render");
+  console.log("BoardsPanelItem " + boardObject.name + "[" + boardObject.boardID + "]:Render");
   const [boardObj, setBoardObj] = useState<boardObject>(boardObject);
   const [boardName, setBoardName] = useState<string>(boardObject.name);
   const [editing, setEditing] = useState<boolean>(false);
@@ -53,11 +53,11 @@ const BoardsPanelItem = ({ boardObject }: boardsPanelItemProps) => {
   };
 
   return (
-    <div className={`${isActive ? "active" : ""}ControlPanelItem`} onClick={onBoardItemClick}>
+    <div className={`${isActive ? "active" : ""}BoardsPanelItem`} onClick={onBoardItemClick}>
       {editing ? (
         <input
           id={`input_${boardObject.boardID}`}
-          className="itemInput"
+          className="boardsPanelItemInput"
           type="text"
           maxLength={20}
           value={boardName}
@@ -69,7 +69,7 @@ const BoardsPanelItem = ({ boardObject }: boardsPanelItemProps) => {
       ) : (
         <h2
           id={`header_${boardObject.boardID}`}
-          className={`${isActive ? "active" : ""}ItemHeader`}
+          className={`${isActive ? "active" : ""}BoardsPanelItemHeader`}
           onDoubleClick={headerDoubleClickHandler}
         >
           {boardName}

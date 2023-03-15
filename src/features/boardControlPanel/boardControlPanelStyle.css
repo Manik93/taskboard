@@ -1,4 +1,4 @@
-.controlPanel {
+.boardControlPanel {
   padding: 1%;
   background: #ffffff;
   border-bottom: 2px solid #6e6d6d;
@@ -8,31 +8,14 @@
   align-items: center;
 }
 
-.panelElements {
+.boardControlPanelItems {
   display: inherit;
   gap: 10px;
 }
 
-.panelElements > span {
+.boardControlPanelItems > span {
   font-size: larger;
   font-weight: 700;
-}
-
-/* .newColumn > span :hover {
-  background-color: #d11c1c;
-} */
-
-/* .newColumn :hover {
-  color: #32ad32;
-  text-decoration: underline;
-}
-
-.newColumn > div > span :hover {
-  color: #d11c1c;
-}
- */
-#buttonContent > span {
-  color: #000000;
 }
 
 .boardDelete {

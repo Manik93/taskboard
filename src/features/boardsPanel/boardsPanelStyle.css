@@ -1,10 +1,23 @@
-.boardControlPanel {
+.boardsPanel {
   border-right: 2px solid black;
   height: inherit;
   width: 15%;
 }
 
-.header {
+.boardsPanel > ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.boardsPanel > hr {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid #8b8b8b;
+}
+
+.boardsPanelHeader {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -13,45 +26,25 @@
   user-select: none;
 }
 
-.header > span {
+.boardsPanelHeader > span {
   font-size: larger;
   font-weight: 700;
 }
-.header > button {
+.boardsPanelHeader > button {
   display: inherit;
   background: none;
   border: none;
   outline: none;
   padding: 0;
 }
-.header > button :hover {
+.boardsPanelHeader > button :hover {
   color: #32ad32;
 }
 
-.boardControlPanel > hr {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border: 1px solid #8b8b8b;
-}
-
-.boardControlPanel > ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.ControlPanelItems {
+.boardsPanelItems {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   background-color: #f5f5f5;
-}
-
-.boardControlPanelItems :hover {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #a8a8a8;
 }

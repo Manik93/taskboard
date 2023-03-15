@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { XCircle, Plus } from "react-feather";
 import { addBoardCatogorySticker, removeBoardCatogory } from "../boardComponent/boardSlice";
 import { useAppDispatch } from "../../app/hooks";
@@ -14,7 +14,7 @@ type columnProps = {
 };
 
 function ColumnComponent({ categoryObject }: columnProps) {
-  console.log("CategoryComponent " + categoryObject.categoryName + ":Rendered");
+  console.log("ColumnComponent " + categoryObject.categoryName + ":Rendered");
   const dispatch = useAppDispatch();
   const categoryName: string = categoryObject.categoryName;
 
@@ -29,19 +29,18 @@ function ColumnComponent({ categoryObject }: columnProps) {
   };
 
   return (
-    <div className="boardComponent">
-      <div className="categoryTitle">
-        {/* tsb */}
+    <div className="columnComponent">
+      <div className="columnTitle">
         <HeaderComponent title={categoryName} />
         <button title="Delete column" onClick={DeleteCategoryHandler}>
           <XCircle />
         </button>
       </div>
 
-      <ul className="stickersList">
+      <ul className="stickerList">
         {categoryObject.stickerList.map((item, key) => {
           return (
-            <li className="stickersListItem">
+            <li className="stickerListItem">
               <StickerComponent key={key} stickerObj={item} />
             </li>
           );

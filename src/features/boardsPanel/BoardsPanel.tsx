@@ -6,30 +6,33 @@ import { boardObject } from "../../app/types";
 import BoardsPanelItem from "../boardsPanelItem/BoardsPanelItem";
 import "./boardsPanelStyle.css";
 
-type appControlProps = {
+type boardsPanelProps = {
   boardsList: boardObject[];
 };
 
-const AppControlPanel = ({ boardsList }: appControlProps) => {
-  console.log("BoardControlPanel:Render");
+const BoardsPanel = ({ boardsList }: boardsPanelProps) => {
+  console.log("BoardsPanel:Render");
   const dispatch = useAppDispatch();
 
   const addBoardHandle = () => {
     const board: boardObject = newBoard();
     dispatch(createBoard(board));
-    dispatch(setActiveBoard(board.boardID));
+    // If boardList is empty - focus first added item
+    if (boardsList.length === 0) {
+      dispatch(setActiveBoard(board.boardID));
+    }
   };
 
   return (
-    <div className="boardControlPanel">
-      <div className="header">
+    <div className="boardsPanel">
+      <div className="boardsPanelHeader">
         <span>Boards</span>
-        <button className="boardAdd" title="Add board" onClick={addBoardHandle}>
+        <button className="boardAdd" title="Add new board" onClick={addBoardHandle}>
           <PlusSquare />
         </button>
       </div>
       <hr />
-      <ul className="ControlPanelItems">
+      <ul className="boardsPanelItems">
         {boardsList.map((item, key) => {
           return <BoardsPanelItem key={key} boardObject={item} />;
         })}
@@ -38,4 +41,4 @@ const AppControlPanel = ({ boardsList }: appControlProps) => {
   );
 };
 
-export default AppControlPanel;
+export default BoardsPanel;

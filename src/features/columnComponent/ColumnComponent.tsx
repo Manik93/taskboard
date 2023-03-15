@@ -1,12 +1,12 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { XCircle, Plus } from "react-feather";
 import { addBoardCatogorySticker, removeBoardCatogory } from "../boardComponent/boardSlice";
 import { useAppDispatch } from "../../app/hooks";
 import { categoryObject } from "../../app/types";
 import { newSticker } from "../../app/helpers";
 import StickerComponent from "../stickerComponent/StickerComponent";
-import "./columnStyle.css";
 import HeaderComponent from "../headerComponent/HeaderComponent";
+import "./columnStyle.css";
 
 type columnProps = {
   categoryObject: categoryObject;
@@ -36,7 +36,6 @@ function ColumnComponent({ categoryObject }: columnProps) {
           <XCircle />
         </button>
       </div>
-
       <ul className="stickerList">
         {categoryObject.stickerList.map((item, key) => {
           return (

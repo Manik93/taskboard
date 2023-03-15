@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
 import { PlusCircle } from "react-feather";
 import { newCategory } from "../../app/helpers";
 import { useAppDispatch } from "../../app/hooks";
-import { RootState } from "../../app/store";
-import { boardObject, categoryObject, stickerObject } from "../../app/types";
+import { boardObject } from "../../app/types";
 import { addBoardCatogory } from "../boardComponent/boardSlice";
 import "./dropdownStyle.css";
 

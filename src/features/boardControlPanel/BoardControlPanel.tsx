@@ -1,10 +1,7 @@
 import React from "react";
 import { XSquare } from "react-feather";
-
-import { useSelector } from "react-redux";
-import { RootState } from "../../app/store";
-import { boardObject, categoryObject } from "../../app/types";
-import { addBoardCatogory, deleteBoard } from "../boardComponent/boardSlice";
+import { boardObject } from "../../app/types";
+import { deleteBoard } from "../boardComponent/boardSlice";
 import { useAppDispatch } from "../../app/hooks";
 import DropdownComponent from "../dropdownComponent/DropdownComponent";
 import "./boardControlPanelStyle.css";
@@ -16,15 +13,8 @@ type boardControlPanelProps = {
 //Board control panel
 const BoardControlPanel = ({ boardObject }: boardControlPanelProps) => {
   console.log("BoardControlPanel:Rendered");
-  const store: RootState = useSelector((state: RootState) => state);
-  // const taskStateStore: categoryObject[] = store.category.value;
-  // console.log(taskStateStore);
   const dispatch = useAppDispatch();
-  //dispatch(setBoardCatogories(taskStateStore));
 
-  const onClickPlaceholder = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log("Export");
-  };
   // Board item button click handler
   const onButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     dispatch(deleteBoard(boardObject.boardID));

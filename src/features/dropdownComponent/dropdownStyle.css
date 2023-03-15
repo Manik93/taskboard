@@ -43,17 +43,6 @@
   color: #32ad32;
 }
 
-/* .categoryAdd :hover ~ .newColumn > span {
-  color: #456645;
-} */
-/* 
-.newColumn > span :hover {
-  color: #000;
-} */
-/* .buttonContent > svg :hover {
-  color: aquamarine;
-} */
-
 .menu {
   position: absolute;
   height: auto;

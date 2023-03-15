@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-//import { loadState } from "../../app/helpers";
 import { RootState } from "../../app/store";
 import { boardObject, categoryObject, stickerObject } from "../../app/types";
 
@@ -17,6 +16,9 @@ export const boardSlice = createSlice({
   name: "boards",
   initialState,
   reducers: {
+    loadFromStore: (state, action: PayloadAction<boardObject[]>) => {
+      state.value = action.payload;
+    },
     // Adding new boardObject to array of boardObjects
     createBoard: (state, action: PayloadAction<boardObject>) => {
       state.value.push(action.payload);
@@ -89,6 +91,7 @@ export const boardSlice = createSlice({
         }
       }
     },
+    // Changeing column list indexes
     changeBoardColumnList: (state, action: PayloadAction<categoryObject[]>) => {
       if (action.payload.length > 1) {
         for (let i = 0; i < state.value.length; i++) {
@@ -148,6 +151,7 @@ export const boardSlice = createSlice({
 });
 
 export const {
+  loadFromStore,
   createBoard,
   deleteBoard,
   addBoardCatogory,

@@ -44,20 +44,6 @@ export const newBoard = () => {
   return board;
 };
 
-//new category object with stickers
-export const newCategory = (name: string, parentBoardID: number) => {
-  // Generating new categoryID
-  const categoryID: number = parseInt(Math.random().toString().slice(5));
-
-  const category: categoryObject = {
-    parentBoardID: parentBoardID,
-    categoryID: categoryID,
-    categoryName: name,
-    stickerList: [],
-  };
-  return category;
-};
-
 // Generating new sticker for current category
 export const newSticker = (parentCategoryObject: categoryObject) => {
   // Generating new stickerID
@@ -70,4 +56,20 @@ export const newSticker = (parentCategoryObject: categoryObject) => {
     stickerData: { header: "", content: "" },
   };
   return sticker;
+};
+
+//new category object with stickers
+export const newCategory = (name: string, parentBoardID: number) => {
+  // Generating new categoryID
+  const categoryID: number = parseInt(Math.random().toString().slice(5));
+
+  let category: categoryObject = {
+    parentBoardID: parentBoardID,
+    categoryID: categoryID,
+    categoryName: name,
+    stickerList: [],
+  };
+
+  category = { ...category, stickerList: [newSticker(category)] };
+  return category;
 };

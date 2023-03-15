@@ -6,13 +6,13 @@ import { removeBoardCatogorySticker } from "../boardComponent/boardSlice";
 import { setStickerHeader, setStickerContent } from "../boardComponent/boardSlice";
 import "./stickerStyle.css";
 
-//StickerComponent props type
+// StickerComponent props type
 type stickerProps = {
   stickerObj: stickerObject;
 };
 
 const StickerComponent = (props: stickerProps) => {
-  console.log(" -StickerComponent " + props.stickerObj.stickerData.header + ":Rendered");
+  console.log(" -StickerComponent " + props.stickerObj.stickerID + ":Rendered");
 
   const [stickerObject, setStickerObject] = useState<stickerObject>(props.stickerObj);
   const [header, setHeader] = useState<string>(stickerObject.stickerData.header as string);
